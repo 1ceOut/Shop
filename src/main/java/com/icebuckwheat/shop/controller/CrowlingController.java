@@ -4,7 +4,6 @@ import com.icebuckwheat.shop.dto.ItemDto;
 import com.icebuckwheat.shop.service.Crowling;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +14,7 @@ import java.util.ArrayList;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/shop")
-@CrossOrigin(value = "http://localhost:8080",allowCredentials ="true")
+//@CrossOrigin(value = "http://localhost:8080",allowCredentials ="true")
 public class CrowlingController {
 
     private final Crowling crowling;
