@@ -1,12 +1,9 @@
 FROM amazoncorretto:17
 
 # 필요한 패키지 설치
-RUN yum update -y && \
-    yum install -y \
-    wget \
-    unzip \
-    google-chrome-stable \
-    && yum clean all
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+
+RUN yum install google-chrome-stable_current_x86_64.rpm
 
 VOLUME /tmp
 
