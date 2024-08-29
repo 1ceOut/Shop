@@ -79,7 +79,7 @@ public class Crowling {
 
             for (WebElement element1 : elements) {
                 bannerlist.add(BannerDto.builder()
-                        .image(element1.findElements(By.xpath(".//a/div/span/img")).getFirst().getAttribute("src"))
+                        .image(element1.findElements(By.xpath(".//a/div/span/img")).get(0).getAttribute("src"))
                         .url(element1.findElement(By.tagName("a")).getAttribute("href"))
                         .build());
                 if (bannerlist.size() >= 3) break;
