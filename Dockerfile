@@ -1,16 +1,12 @@
 FROM openjdk:17.0.1-jdk-slim
 
-RUN apt-get -y update
+RUN apt update
 
-RUN apt -y install wget
+RUN apt install wget -y
 
-RUN apt -y install unzip
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
-RUN apt -y install curl
-
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-    && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
-RUN apt-get update && apt-get -y install google-chrome-stable
+RUN dpkg -i ./google-chrome-stable_current_amd64.deb
 
 VOLUME /tmp
 
