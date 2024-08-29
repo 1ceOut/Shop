@@ -1,7 +1,5 @@
 package com.icebuckwheat.shop.config;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,15 +17,5 @@ public class ChromeDiverConfig {
 
         //options.setCapability("ignoreProtectedModeSettings", true);
         return options;
-    }
-
-    @Bean(name = "web_driver")
-    public WebDriver driver() {
-        return new ChromeDriver(ChromeOptions());
-    }
-
-    @Bean(name = "goods")
-    public WebDriver goods_driver() {
-        return new ChromeDriver(ChromeOptions());
     }
 }
