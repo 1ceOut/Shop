@@ -41,9 +41,9 @@ public class Crowling {
                 }
                 itemDto.setUrl(element.getAttribute("href"));
                 itemDto.setImage(imgURL);
-                itemDto.setTitle(element.findElement(By.xpath("//div[3]/span[2]")).getText());
+                itemDto.setTitle(element.findElement(By.cssSelector(".css-1dry2r1.e1c07x485")).getText());
                 try {
-                    itemDto.setSubtitle(element.findElement(By.xpath("//div[3]/p")).getText());
+                    itemDto.setSubtitle(element.findElement(By.cssSelector(".css-1kpzrna.e1c07x486 > p")).getText());
                 } catch (Exception ignored) {
 
                 }
