@@ -31,7 +31,7 @@ public class Crowling {
             driver.get("https://www.kurly.com/collection-groups/market-best?page=1&collection=market-best-logic");
             new Actions(driver).sendKeys(Keys.END).perform();
 
-            WebElement getATag = driver.findElement(By.cssSelector(".css-11kh0cw"));
+            WebElement getATag = driver.findElement(By.cssSelector("#container > div > div.css-1d3w5wq.ef36txc6 > div.css-11kh0cw.ef36txc5"));
             List<WebElement> elements = getATag.findElements(By.tagName("a"));
             System.out.println("parsing end!");
             for (WebElement element : elements) {
