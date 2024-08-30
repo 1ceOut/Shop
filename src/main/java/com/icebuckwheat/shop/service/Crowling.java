@@ -31,11 +31,8 @@ public class Crowling {
             driver.get("https://www.kurly.com/collection-groups/market-best?page=1&collection=market-best-logic");
             new Actions(driver).sendKeys(Keys.END).perform();
 
-            System.out.println(driver.getPageSource());
 
-            WebElement getATag = driver.findElement(By.xpath("//div[contains(@class, 'cw')]"));
-            List<WebElement> elements = getATag.findElements(By.tagName("a"));
-            System.out.println("parsing end!");
+            List<WebElement> elements = driver.findElements(By.xpath("//*[@id=\"container\"]/div/div[2]/div[2]/a"));
             for (WebElement element : elements) {
                 ItemDto itemDto = new ItemDto();
                 String imgURL = element.findElement(By.tagName("img")).getAttribute("src");
@@ -44,9 +41,9 @@ public class Crowling {
                 }
                 itemDto.setUrl(element.getAttribute("href"));
                 itemDto.setImage(imgURL);
-                itemDto.setTitle(element.findElement(By.cssSelector(".css-1dry2r1")).getText());
+                itemDto.setTitle(element.findElement(By.xpath("//div[3]/span[2]")).getText());
                 try {
-                    itemDto.setSubtitle(element.findElement(By.cssSelector(".css-1wejlc3")).getText());
+                    itemDto.setSubtitle(element.findElement(By.xpath("//div[3]/p")).getText());
                 } catch (Exception ignored) {
 
                 }
