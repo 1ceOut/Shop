@@ -31,6 +31,8 @@ public class Crowling {
             driver.get("https://www.kurly.com/collection-groups/market-best?page=1&collection=market-best-logic");
             new Actions(driver).sendKeys(Keys.END).perform();
 
+            System.out.println(driver.getPageSource());
+
             WebElement getATag = driver.findElement(By.xpath("//div[contains(@class, 'cw')]"));
             List<WebElement> elements = getATag.findElements(By.tagName("a"));
             System.out.println("parsing end!");
