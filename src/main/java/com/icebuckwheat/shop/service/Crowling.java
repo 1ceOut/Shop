@@ -33,6 +33,7 @@ public class Crowling {
 
 
             List<WebElement> elements = driver.findElements(By.xpath("//*[@id=\"container\"]/div/div[2]/div[2]/a"));
+            System.out.printf("parsing: %d\n",elements.size());
             for (WebElement element : elements) {
                 ItemDto itemDto = new ItemDto();
                 String imgURL = element.findElement(By.tagName("img")).getAttribute("src");
