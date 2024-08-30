@@ -3,10 +3,7 @@ package com.icebuckwheat.shop.service;
 import com.icebuckwheat.shop.dto.BannerDto;
 import com.icebuckwheat.shop.dto.ItemDto;
 import lombok.RequiredArgsConstructor;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
@@ -29,7 +26,22 @@ public class Crowling {
 
             // 웹페이지 로드
             driver.get("https://www.kurly.com/collection-groups/market-best?page=1&collection=market-best-logic");
-            new Actions(driver).sendKeys(Keys.END).perform();
+            //new Actions(driver).sendKeys(Keys.END).perform();
+
+            int previousHeight = ((Long) ((JavascriptExecutor) driver).executeScript("return document.body.scrollHeight")).intValue();
+            while (true) {
+                // 페이지 끝으로 스크롤
+                new Actions(driver).sendKeys(Keys.END).perform();
+                // 잠시 대기
+                Thread.sleep(100); // 이미지 로드 대기
+
+                // 현재 높이
+                int currentHeight = ((Long) ((JavascriptExecutor) driver).executeScript("return document.body.scrollHeight")).intValue();
+                if (currentHeight == previousHeight) {
+                    break; // 더 이상 스크롤할 수 없으면 종료
+                }
+                previousHeight = currentHeight;
+            }
 
 
             List<WebElement> elements = driver.findElements(By.xpath("//*[@id=\"container\"]/div/div[2]/div[2]/a"));
